@@ -41,9 +41,10 @@ export const fetchUsers = () =>
 
 export const fetchUserData = (userId, month) =>
   (dispatch) => {
-    const url = `${ROOT_URL}training/weeks/${month}/${2017}/${userId}`;
+    const url = `${ROOT_URL}training/weeks/${5}/${2017}/${userId}`;
     axios.get(url)
       .then((response) => {
+        console.log(response.data);
         dispatch({
           type: FETCH_USER_DATA,
           payload: response,
