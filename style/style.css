@@ -1,0 +1,84 @@
+
+.datePickerContainer  {
+    display:flex;  
+    justify-content:center; 
+    margin: 20px auto;    
+}
+
+.formCont{
+    display:flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 20px auto;    
+}
+
+.datePickerContainer__prompt {
+    color:white;
+    margin: 0 10px 0 0;
+}
+
+input {
+    width:280px;
+}
+
+.roomFilter{
+   width:270px;
+   margin-bottom: 5px;
+
+}
+
+.title {
+    color:white;
+    text-align: center;
+}
+
+.listOfRooms {
+    display:flex; 
+    flex-wrap:wrap; 
+    justify-content:center; 
+    align-items:flex-start;
+}
+
+.room{
+    width: 300px;
+    margin: 5px;
+    padding: 4px;
+}
+
+.room:hover{
+    opacity: 0.7;
+}
+
+.room__img {
+    display: block;
+    width: 100%;
+    padding: 2px;
+    padding-bottom: 0px;
+}
+
+.room__description{
+    display:flex;
+    justify-content: space-between;
+}
+
+.roomInfo {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.roomInfo span {
+    font-size: 20px;
+    color: #0085c1;
+}
+
+@media (max-width: 349px) {
+  .react-datepicker-wrapper {
+    margin-top:25px;
+  }
+}
+
+ @media (max-width: 270px) {
+  .react-datepicker-wrapper {
+    margin-top:50px;
+  } 
+}
