@@ -1,5 +1,4 @@
 import axios from 'axios';
-import moment from 'moment';
 
 import { FETCH_USERS, FETCH_USER_DATA, CURRENT_MONTH, NEXT_MONTH, PREVIOUS_MONTH } from './types';
 
@@ -55,7 +54,6 @@ export const fetchUserData = (userId, month) =>
 
 export const showCurrentMonth = () => ({
   type: CURRENT_MONTH,
-  payload: moment().month(), // format('MMM'),
 });
 
 export const showNextMonth = () => ({

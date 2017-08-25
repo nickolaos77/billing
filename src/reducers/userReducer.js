@@ -12,7 +12,7 @@ export const usersReducer = (state = [], action) => {
 export const userDataReducer = (state = [], action) => {
   switch (action.type) {
     case FETCH_USER_DATA:
-      return [action.payload.data];
+      return [...action.payload.data];
     default:
       return state;
   }

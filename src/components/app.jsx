@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchUsers } from '../actions/index';
+import { fetchUsers, showCurrentMonth } from '../actions/index';
 import ListOfUsers from './listOfUsers';
-import Calendar from './calendar'
+import Calendar from './calendar';
 
 class App extends Component {
   constructor(props) {
@@ -14,20 +14,21 @@ class App extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchUsers());
+    this.props.dispatch(showCurrentMonth());
   }
 
   render() {
     return (
-      <div className="app">
+      <div className="column">
         <form>
           <fieldset>
-            <p>
-              <label>Select list</label>
+            <div className='row'>
+              <label><h3 className="textColor" style={{ marginRight: 30 }}>Select user:  </h3></label>
               <ListOfUsers />
-            </p>
+            </div>
           </fieldset>
         </form>
-        <Calendar/>
+        <Calendar />
       </div>
     );
   }
