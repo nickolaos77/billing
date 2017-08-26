@@ -47,17 +47,20 @@ export const fetchUsers = () =>
 
 export const fetchUserData = (userId, month) =>
   (dispatch) => {
-    const url = `${ROOT_URL}training/weeks/${5}/${2017}/${userId}`;
+    const url = `${ROOT_URL}training/weeks/${month}/${2017}/${userId}`;
     axios.get(url)
       .then((response) => {
-        console.log(response.data);
+        const weeks = response.data.data.weeks.sort((weekA, weekB) => weekA.week_number - weekB.week_number);
+        weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.day_number - dayB.day_number));
+        console.log(weeks);
         dispatch({
           type: FETCH_USER_DATA,
-          payload: response,
+          payload: weeks,
         });
       })
       .catch(error => errorHandler(error));
   };
+
 
 export const showCurrentMonth = () => ({
   type: CURRENT_MONTH,

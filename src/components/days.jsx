@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchUserData } from '../actions/index';
-
 class Days extends Component {
   constructor(props) {
     super(props);
@@ -11,11 +9,22 @@ class Days extends Component {
   }
 
   renderDays() {
-    return this.props.days.map((day, index) => (
-      <div key={index} className="textWrapper" style={{ textAlign: 'center' }}>
-        <h3 >{day}</h3>
-      </div>
-    ),
+    
+    const daysWithHours = this.props.userData.map(week => week.days_in_week);
+    function manipulateObject(object) {
+      
+    }
+    console.log('daysWithHours', daysWithHours);
+    return this.props.days.map((day, index) => {
+      if (true) { 
+        return (
+          <div key={index} className="textWrapper" style={{ textAlign: 'center' }}>
+            <h3 >{day}</h3>
+            <h5 style={{ margin: 0 }}>0</h5>
+          </div>
+        );
+      }
+    }
     );
   }
 
@@ -28,4 +37,8 @@ class Days extends Component {
   }
 }
 
-export default connect(state => ({ users: state.users, days: state.days }))(Days);
+export default connect(state => ({
+  users: state.users,
+  days: state.days,
+  userData: state.userData,
+}))(Days);

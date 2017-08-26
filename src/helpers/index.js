@@ -6,9 +6,12 @@ export default (Month = moment()) => {
   const endOfPreviousMonth = Month.subtract(1, 'M').endOf('month').format('D');
   const endOfMonth = Month.add(1,'M').endOf('month').format('D');
   const startOfMonth = Month.startOf('month').format('dddd');
+  const firstWeekOfMonth =  Month.startOf('month').isoWeek();
   const dayOfWeek = Month.startOf('month').format('E');
+  const lastWeekOfMonth = Month.endOf('month').isoWeek();
   // construct array of days
-  console.log('dayOfWeek', dayOfWeek);
+  console.log('firstWeekOfMonth', firstWeekOfMonth);
+  console.log('lastWeekOfMonth', lastWeekOfMonth);
   const arrayOfDays = [];
   for (let i = 1; i < dayOfWeek; i++) {
     arrayOfDays.push( +endOfPreviousMonth + 1 + i - dayOfWeek);

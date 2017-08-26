@@ -12,7 +12,7 @@ class ListOfUsers extends Component {
   }
 
   onChange(e) {
-    this.props.dispatch(fetchUserData(e.target.value));
+    this.props.dispatch(fetchUserData(e.target.value, this.props.month.monthNum + 1));
     console.log(e.target.value);
     this.setState({ value: e.target.value });
   }
@@ -35,4 +35,7 @@ class ListOfUsers extends Component {
   }
 }
 
-export default connect(state => ({ users: state.users }))(ListOfUsers);
+export default connect(state => ({
+  users: state.users,
+  month: state.month,
+}))(ListOfUsers);
