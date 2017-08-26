@@ -1,3 +1,7 @@
+h3{
+    margin-top:0px;
+}
+
 .container {
     display : flex;
 }
@@ -29,8 +33,14 @@
 }
 
 .textWrapper{
-    width: 40px; 
+    width: 50px; 
     text-align: 'center'; 
+}
+
+.width280{
+    width:350px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .expandHor {

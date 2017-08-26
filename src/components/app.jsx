@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import createDaysArrayUtil from '../helpers/';
 
-import { fetchUsers, showCurrentMonth } from '../actions/index';
+import { fetchUsers, showCurrentMonth, daysArrayAG } from '../actions/index';
 import ListOfUsers from './listOfUsers';
 import Calendar from './calendar';
 
@@ -10,11 +11,17 @@ class App extends Component {
     super(props);
     this.state = { user: '' };
     // this.clickHandler = this.clickHandler.bind(this);
+    this.createDaysArray = this.createDaysArray.bind(this);
   }
 
   componentDidMount() {
+    this.props.dispatch(daysArrayAG(this.createDaysArray()));
     this.props.dispatch(fetchUsers());
     this.props.dispatch(showCurrentMonth());
+  }
+
+  createDaysArray() {
+    return createDaysArrayUtil();
   }
 
   render() {
@@ -22,8 +29,8 @@ class App extends Component {
       <div className="column">
         <form>
           <fieldset>
-            <div className='row'>
-              <label><h3 className="textColor" style={{ marginRight: 30 }}>Select user:  </h3></label>
+            <div className="row" >
+              <label><h3 className="textColor centered" style={{ marginRight: 30 }}>Select user:  </h3></label>
               <ListOfUsers />
             </div>
           </fieldset>

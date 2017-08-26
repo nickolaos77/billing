@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-import { FETCH_USERS, FETCH_USER_DATA, CURRENT_MONTH, NEXT_MONTH, PREVIOUS_MONTH } from './types';
+import {
+  FETCH_USERS,
+  FETCH_USER_DATA,
+  CURRENT_MONTH,
+  NEXT_MONTH,
+  PREVIOUS_MONTH,
+  DAYS_ARRAY,
+} from './types';
 
 const ROOT_URL = 'https://timesheet-training-api.herokuapp.com/api/';
 
@@ -62,4 +69,9 @@ export const showNextMonth = () => ({
 
 export const showPreviousMonth = () => ({
   type: PREVIOUS_MONTH,
+});
+
+export const daysArrayAG = daysArray => ({
+  type: DAYS_ARRAY,
+  payload: daysArray,
 });

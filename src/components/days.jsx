@@ -11,8 +11,8 @@ class Days extends Component {
   }
 
   renderDays() {
-    return [1, 2, 3, 4, 5, 6, 7].map(day => (
-      <div key={day} className="textWrapper" >
+    return this.props.days.map((day, index) => (
+      <div key={index} className="textWrapper" style={{ textAlign: 'center' }}>
         <h3 >{day}</h3>
       </div>
     ),
@@ -21,11 +21,11 @@ class Days extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="row width280">
         {this.renderDays()}
       </div>
     );
   }
 }
 
-export default connect(state => ({ users: state.users }))(Days);
+export default connect(state => ({ users: state.users, days: state.days }))(Days);
