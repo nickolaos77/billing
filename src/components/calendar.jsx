@@ -37,6 +37,7 @@ class Calendar extends Component {
             }
             }
           >&#187;</h2>
+          
         </div>
         <WeekDays />
         <Days />
