@@ -51,7 +51,7 @@ export const fetchUserData = (userId, month) =>
     axios.get(url)
       .then((response) => {
         const weeks = response.data.data.weeks.sort((weekA, weekB) => weekA.week_number - weekB.week_number);
-        weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.day_number - dayB.day_number));
+        weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.id - dayB.id));
         console.log(weeks);
         dispatch({
           type: FETCH_USER_DATA,

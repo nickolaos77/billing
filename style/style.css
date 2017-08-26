@@ -34,7 +34,8 @@ h3{
 
 .textWrapper{
     width: 50px; 
-    text-align: 'center'; 
+    text-align: center;
+    align-items: flex-start; 
 }
 
 .width280{
