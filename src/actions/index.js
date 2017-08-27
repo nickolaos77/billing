@@ -45,22 +45,27 @@ export const fetchUsers = () =>
   };
 
 
-export const fetchUserData = (userId, month) =>
-  (dispatch) => {
-    const url = `${ROOT_URL}training/weeks/${month}/${2017}/${userId}`;
-    axios.get(url)
-      .then((response) => {
-        const weeks = response.data.data.weeks.sort((weekA, weekB) => weekA.week_number - weekB.week_number);
-        weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.id - dayB.id));
-        console.log("weeks fetchUserData action creator ",weeks);
-        dispatch({
-          type: FETCH_USER_DATA,
-          payload: weeks,
-        });
-      })
-      .catch(error => errorHandler(error));
-  };
-
+export const fetchUserData = (userId, month) => {
+  if (userId && month) {
+    return (dispatch) => {
+      const url = `${ROOT_URL}training/weeks/${month}/${2017}/${userId}`;
+      axios.get(url)
+        .then((response) => {
+          const weeks = response.data.data.weeks
+            .sort((weekA, weekB) => weekA.week_number - weekB.week_number);
+          weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.id - dayB.id));
+          console.log("weeks fetchUserData action creator ",weeks);
+          dispatch({
+            type: FETCH_USER_DATA,
+            payload: { weeks, userId },
+          });
+        })
+        .catch(error => errorHandler(error));
+    };
+  } else if (!userId || !!month) {
+    return { type: FETCH_USER_DATA, payload: {} };
+  }
+};
 
 export const showCurrentMonth = () => ({
   type: CURRENT_MONTH,

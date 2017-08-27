@@ -17,7 +17,7 @@ class ListOfWeeks extends Component {
     const weeks = [];
     var weekNumberOfFirstWeekOfMonth = firstWeekOfMonth;
     var weeksNumbersReconcilationDone = false;
-    if (this.props.days.length > 0 && this.props.userData.length ===0) { // at first load this if is executed
+    if (this.props.days.length > 0 && !this.props.userData.weeks) { // at first load this if is executed
       const numOfWeeks = this.props.days.length / 7;
       for (let i = 0; i <= numOfWeeks; i++) {
         weeks.push(<Week
@@ -27,8 +27,8 @@ class ListOfWeeks extends Component {
           days={this.props.days.slice(7 * i, (7 * i) + 7)}
         />);
       }
-    } else if (this.props.days.length > 0 && this.props.userData.length !==0) {
-        if (weekNumberOfFirstWeekOfMonth < this.props.userData[0].week_number) {
+    } else if (this.props.days.length > 0 && this.props.userData.weeks.length !==0) {
+        if (weekNumberOfFirstWeekOfMonth < this.props.userData.weeks[0].week_number) {
         weekNumberOfFirstWeekOfMonth++;
         weeksNumbersReconcilationDone = true;
         weeks.push(<Week
@@ -40,23 +40,23 @@ class ListOfWeeks extends Component {
       if ( weeksNumbersReconcilationDone===false ) { // if there has not been a reconcilation
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 0; i <= numOfWeeks; i++) {
-          console.log(this.props.userData[i]); 
+          console.log(this.props.userData.weeks[i]); 
           weeks.push(<Week
             className="row"
             key={i}
             week={firstWeekOfMonth+i}
-            weekData={this.props.userData[i]}
+            weekData={this.props.userData.weeks[i]}
             days={this.props.days.slice(7 * i, 7 * i + 7)} />);
         }
       } else {//if there has been a reconcilation skip one week
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 1; i <= numOfWeeks; i++) {
-          console.log(this.props.userData[i-1]); 
+          console.log(this.props.userData.weeks[i-1]); 
           weeks.push(<Week
             className="row"
             key={i}
             week={firstWeekOfMonth+i}
-            weekData={this.props.userData[i-1]}
+            weekData={this.props.userData.weeks[i-1]}
             days={this.props.days.slice(7 * i, 7 * i + 7)} />);
         }
       }

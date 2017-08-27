@@ -24,10 +24,13 @@ class Calendar extends Component {
           <h2
             className="textColor hover"
             onClick={() => {
+              this.props.dispatch(fetchUserData()); // clear the userdata
               this.props.dispatch(showPreviousMonth());
               this.props.dispatch(daysArrayAG(this.createDaysArray(this.props.month.date)));
+              if (this.props.userData.userId) {
               this.props.dispatch(
-                fetchUserData(this.props.userData.owner_id, this.props.month.monthNum + 1));
+                fetchUserData(this.props.userData.userId, this.props.month.monthNum));
+              }
             }
             }
           >&#171;</h2>
@@ -35,8 +38,13 @@ class Calendar extends Component {
           <h2
             className="textColor hover"
             onClick={() => {
+              this.props.dispatch(fetchUserData()); // clear the userdata
               this.props.dispatch(showNextMonth());
               this.props.dispatch(daysArrayAG(this.createDaysArray(this.props.month.date)));
+              if (this.props.userData.userId) {
+              this.props.dispatch(
+                fetchUserData(this.props.userData.userId, this.props.month.monthNum + 2));
+              }
             }
             }
           >&#187;</h2>

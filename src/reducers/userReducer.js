@@ -9,10 +9,10 @@ export const usersReducer = (state = [], action) => {
   }
 };
 
-export const userDataReducer = (state = [], action) => {
+export const userDataReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_USER_DATA:
-      return [...action.payload];
+      return { weeks: action.payload.weeks, userId: action.payload.userId };
     default:
       return state;
   }

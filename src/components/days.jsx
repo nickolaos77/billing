@@ -15,7 +15,7 @@ class Days extends Component {
         return true;
       }
     }
-    var daysObjects = this.props.userData
+    var daysObjects = this.props.userData.weeks
       .map(week => week.days_in_week)
       .reduce((a, b) => a.concat(b), []); // flatten the array;
     if (daysObjects.length > 0) {

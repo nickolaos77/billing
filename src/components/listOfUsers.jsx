@@ -12,15 +12,22 @@ class ListOfUsers extends Component {
   }
 
   onChange(e) {
-    this.props.dispatch(fetchUserData(e.target.value, this.props.month.monthNum + 1));
-    console.log(e.target.value);
-    this.setState({ value: e.target.value });
+    if (e.target.value !== 'username') {
+      this.props.dispatch(fetchUserData(e.target.value, this.props.month.monthNum + 1));
+      console.log(e.target.value);
+      this.setState({ value: e.target.value });
+    } else if (e.target.value === 'username') {
+      this.props.dispatch(fetchUserData());
+      console.log(e.target.value);
+      this.setState({ value: e.target.value });
+    }
+
   }
 
   renderUsers() {
     if (this.props.users.length > 0) {
       const users = [];
-      users.push(<option value={0} key={0}>username</option>)
+      users.push(<option value="username" key="username">username</option>)
       this.props.users.forEach(user => users.push(
         <option value={user.id} key={user.id}>{user.username}</option>)
       );
