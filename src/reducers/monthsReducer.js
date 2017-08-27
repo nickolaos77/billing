@@ -1,5 +1,5 @@
-import { CURRENT_MONTH, NEXT_MONTH, PREVIOUS_MONTH } from '../actions/types';
 import moment from 'moment';
+import { CURRENT_MONTH, NEXT_MONTH, PREVIOUS_MONTH } from '../actions/types';
 
 export default (state = null, action) => {
   switch (action.type) {

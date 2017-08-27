@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { showPreviousMonth, showNextMonth, daysArrayAG } from '../actions/index';
+import { showPreviousMonth, showNextMonth, daysArrayAG, fetchUserData } from '../actions/index';
 import Days from './days';
 import WeekDays from './weekdays';
-import createDaysArrayUtil from '../helpers/';
+import ListOfWeeks from './listOfWeeks';
+import createDaysArrayUtil from '../helpers/'; 
 
 class Calendar extends Component {
   constructor(props) {
@@ -18,13 +19,15 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="column">
-        <div className="row expandHor">
+      <div className="column fixWidthCol">
+        <div className="row">
           <h2
             className="textColor hover"
             onClick={() => {
               this.props.dispatch(showPreviousMonth());
               this.props.dispatch(daysArrayAG(this.createDaysArray(this.props.month.date)));
+              this.props.dispatch(
+                fetchUserData(this.props.userData.owner_id, this.props.month.monthNum + 1));
             }
             }
           >&#171;</h2>
@@ -37,13 +40,13 @@ class Calendar extends Component {
             }
             }
           >&#187;</h2>
-          
         </div>
         <WeekDays />
-        <Days />
+        <ListOfWeeks />
+        {/* <Days /> */}
       </div>
     );
   }
 }
 
-export default connect(state => ({ month: state.month }))(Calendar);
+export default connect(state => ({ month: state.month, userData: state.userData }))(Calendar);

@@ -7,7 +7,7 @@ const DayOfWeek = props => (
 )
 
 export default () => (
-  <div className="row width280" style={{ textAlign: 'center' }}>
+  <div className="row" style={{ textAlign: 'center' }}>
     {['Mon', 'Tue', 'Wen', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => <DayOfWeek key={day} name={day} />)}
   </div>
 );

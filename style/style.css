@@ -19,6 +19,7 @@ h3{
   align-content: space-around;
   margin: auto;
   width:100%;
+  text-align: center;
 }
 
 .column {
@@ -30,6 +31,7 @@ h3{
   align-content: space-around;
   margin: auto;
   width:100%;
+  text-align: center;
 }
 
 .textWrapper{
@@ -38,16 +40,23 @@ h3{
     align-items: flex-start; 
 }
 
-.width280{
+.fixedWidth{
     width:350px;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
 
+.fixWidthCol{
+    width:350px;
+}
+
+.fixedWidthElement{
+    width:50px;
+}
+
 .expandHor {
     width:100%;
 }
-
 
 .textColor {
     color: white; 

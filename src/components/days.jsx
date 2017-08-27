@@ -54,7 +54,7 @@ class Days extends Component {
   render() {
     return (
       <div className="row width280">
-        {this.renderDays()}
+        {/*this.renderDays()*/}
       </div>
     );
   }

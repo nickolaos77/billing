@@ -19,9 +19,12 @@ class ListOfUsers extends Component {
 
   renderUsers() {
     if (this.props.users.length > 0) {
-      return this.props.users.map(user =>
-        <option value={user.id} key={user.id}>{user.username}</option>
+      const users = [];
+      users.push(<option value={0} key={0}>username</option>)
+      this.props.users.forEach(user => users.push(
+        <option value={user.id} key={user.id}>{user.username}</option>)
       );
+      return users;
     }
     return <option>fetching users...</option>;
   }

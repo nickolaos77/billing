@@ -52,7 +52,7 @@ export const fetchUserData = (userId, month) =>
       .then((response) => {
         const weeks = response.data.data.weeks.sort((weekA, weekB) => weekA.week_number - weekB.week_number);
         weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.id - dayB.id));
-        console.log(weeks);
+        console.log("weeks fetchUserData action creator ",weeks);
         dispatch({
           type: FETCH_USER_DATA,
           payload: weeks,
