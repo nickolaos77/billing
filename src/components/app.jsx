@@ -5,6 +5,7 @@ import createDaysArrayUtil from '../helpers/';
 import { fetchUsers, showCurrentMonth, daysArrayAG } from '../actions/index';
 import ListOfUsers from './listOfUsers';
 import Calendar from './calendar';
+import Buttons from './buttons';
 
 class App extends Component {
   constructor(props) {
@@ -26,16 +27,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="column">
-        <form>
-          <fieldset>
-            <div className="row" >
-              <label><h3 className="textColor centered" style={{ marginRight: 30 }}>Select user:  </h3></label>
-              <ListOfUsers />
-            </div>
-          </fieldset>
-        </form>
-        <Calendar />
+      <div className="column app">
+        <header className="row" style={{ backgroundColor: '#6750B5' }}>
+          <form>
+            <fieldset>
+              <div className="row" >
+                <label><h3 className="textColor centered" style={{ marginRight: 30 }}>Select user:  </h3></label>
+                <ListOfUsers />
+              </div>
+            </fieldset>
+          </form>
+        </header>
+        <section className="column section">
+          <Calendar />
+          <Buttons />
+        </section>
       </div>
     );
   }

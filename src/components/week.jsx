@@ -29,8 +29,8 @@ class Week extends Component {
       if (!this.props.weekData) {
         return (
           <div key={day} className="textWrapper">
-            <h3 >{day}</h3>
-            <h5 style={{ margin: 0 }} />
+            <h3 className="textColor">{day}</h3>
+            <h5 style={{ margin: 0 }}/>
           </div>
         );
 

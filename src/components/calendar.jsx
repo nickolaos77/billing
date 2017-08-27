@@ -20,7 +20,7 @@ class Calendar extends Component {
   render() {
     return (
       <div className="column fixWidthCol">
-        <div className="row">
+        <div className="row" style={{ justifyContent: 'space-around' }}>
           <h2
             className="textColor hover"
             onClick={() => {
@@ -33,7 +33,7 @@ class Calendar extends Component {
               }
             }
             }
-          >&#171;</h2>
+          >&#8249;</h2>
           {this.props.month && <h2 className="textColor">{this.props.month.name}</h2>}
           <h2
             className="textColor hover"
@@ -47,7 +47,7 @@ class Calendar extends Component {
               }
             }
             }
-          >&#187;</h2>
+          >&#8250;</h2>
         </div>
         <WeekDays />
         <ListOfWeeks />

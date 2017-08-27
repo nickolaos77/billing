@@ -65,24 +65,42 @@ h3{
 .hover:hover{
     cursor: pointer
 }
+.app{
+    width:350px;
+}
 
+.button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 33%;
+}
 
+.button__success {
+   background-color: #4CAF50;
+}
+.button__danger {
+   background-color: #f44336;
+}
 
-.day{
-    width: 50px;
-    height: 50px;
-    background: red;
-    margin: auto;
+fieldset {
+    border-width: 0px ! important;
+}
+
+.section {
+    background-image: linear-gradient(#3D63B3, #6D4EB5);
 }
 
 @media (max-width: 349px) {
-  .react-datepicker-wrapper {
-    margin-top:25px;
+
   }
 }
 
  @media (max-width: 270px) {
-  .react-datepicker-wrapper {
-    margin-top:50px;
+
   } 
 }
