@@ -28,7 +28,7 @@ class App extends Component {
   render() {
     return (
       <div className="column app">
-        <header className="row" style={{ backgroundColor: '#6750B5' }}>
+        <header className="row header" >
           <form>
             <fieldset>
               <div className="row" >

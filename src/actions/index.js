@@ -7,6 +7,7 @@ import {
   NEXT_MONTH,
   PREVIOUS_MONTH,
   DAYS_ARRAY,
+  SELECT_WEEK,
 } from './types';
 
 const ROOT_URL = 'https://timesheet-training-api.herokuapp.com/api/';
@@ -82,4 +83,9 @@ export const showPreviousMonth = () => ({
 export const daysArrayAG = daysArray => ({
   type: DAYS_ARRAY,
   payload: daysArray,
+});
+
+export const selectWeek = week => ({
+  type: SELECT_WEEK,
+  payload: week,
 });

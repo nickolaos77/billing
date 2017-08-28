@@ -19,11 +19,12 @@ class ListOfWeeks extends Component {
     var weeksNumbersReconcilationDone = false;
     if (this.props.days.length > 0 && !this.props.userData.weeks) { // at first load this if is executed
       const numOfWeeks = this.props.days.length / 7;
-      for (let i = 0; i <= numOfWeeks; i++) {
+      for (let i = 0; i < numOfWeeks; i++) {
+        console.log("extra week from 1");
         weeks.push(<Week
           className="row"
           key={i}
-          week={firstWeekOfMonth + i}
+          currentWeek={firstWeekOfMonth + i}
           days={this.props.days.slice(7 * i, (7 * i) + 7)}
         />);
       }
@@ -31,6 +32,7 @@ class ListOfWeeks extends Component {
         if (weekNumberOfFirstWeekOfMonth < this.props.userData.weeks[0].week_number) {
         weekNumberOfFirstWeekOfMonth++;
         weeksNumbersReconcilationDone = true;
+        console.log("extra week from 2");
         weeks.push(<Week
           className="row"
           key="firstWeek"
@@ -40,22 +42,24 @@ class ListOfWeeks extends Component {
       if ( weeksNumbersReconcilationDone===false ) { // if there has not been a reconcilation
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 0; i <= numOfWeeks; i++) {
+          console.log("extra week from 3");
           console.log(this.props.userData.weeks[i]); 
           weeks.push(<Week
             className="row"
             key={i}
-            week={firstWeekOfMonth+i}
+            currentWeek={firstWeekOfMonth+i}
             weekData={this.props.userData.weeks[i]}
             days={this.props.days.slice(7 * i, 7 * i + 7)} />);
         }
       } else {//if there has been a reconcilation skip one week
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 1; i <= numOfWeeks; i++) {
+          console.log("extra week from 4");
           console.log(this.props.userData.weeks[i-1]); 
           weeks.push(<Week
             className="row"
             key={i}
-            week={firstWeekOfMonth+i}
+            currentWeek={firstWeekOfMonth+i}
             weekData={this.props.userData.weeks[i-1]}
             days={this.props.days.slice(7 * i, 7 * i + 7)} />);
         }
@@ -66,7 +70,7 @@ class ListOfWeeks extends Component {
 
   render() {
     return (
-      <div className="column">
+      <div className="column calendar__days">
         {this.renderWeeks()}
       </div>
     );

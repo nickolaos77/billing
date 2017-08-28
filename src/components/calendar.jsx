@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { showPreviousMonth, showNextMonth, daysArrayAG, fetchUserData } from '../actions/index';
-import Days from './days';
 import WeekDays from './weekdays';
 import ListOfWeeks from './listOfWeeks';
 import createDaysArrayUtil from '../helpers/'; 
@@ -19,8 +18,8 @@ class Calendar extends Component {
 
   render() {
     return (
-      <div className="column fixWidthCol">
-        <div className="row" style={{ justifyContent: 'space-around' }}>
+      <div className="column calendar">
+        <div className="row spaceAround calendar__month">
           <h2
             className="textColor hover"
             onClick={() => {
@@ -49,9 +48,10 @@ class Calendar extends Component {
             }
           >&#8250;</h2>
         </div>
-        <WeekDays />
-        <ListOfWeeks />
-        {/* <Days /> */}
+        <div className="column calendar__body">
+          <WeekDays />
+          <ListOfWeeks />
+        </div>
       </div>
     );
   }

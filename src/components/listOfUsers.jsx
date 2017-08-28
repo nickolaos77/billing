@@ -38,7 +38,7 @@ class ListOfUsers extends Component {
 
   render() {
     return (
-      <select id="myList" onChange={this.onChange} value={this.state.value}>
+      <select onChange={this.onChange} value={this.state.value}>
         {this.renderUsers()}
       </select>
     );
