@@ -4,8 +4,7 @@ import {
   FETCH_USERS,
   FETCH_USER_DATA,
   CURRENT_MONTH,
-  NEXT_MONTH,
-  PREVIOUS_MONTH,
+  NEW_MONTH,
   DAYS_ARRAY,
   SELECT_WEEK,
 } from './types';
@@ -13,7 +12,7 @@ import {
 const ROOT_URL = 'https://timesheet-training-api.herokuapp.com/api/';
 
 // the errorHandler comes from the axios documentation
-function errorHandler(error) {
+const errorHandler = (error) => {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
@@ -55,7 +54,6 @@ export const fetchUserData = (userId, month) => {
           const weeks = response.data.data.weeks
             .sort((weekA, weekB) => weekA.week_number - weekB.week_number);
           weeks.forEach(week => week.days_in_week.sort((dayA, dayB) => dayA.id - dayB.id));
-          console.log("weeks fetchUserData action creator ",weeks);
           dispatch({
             type: FETCH_USER_DATA,
             payload: { weeks, userId },
@@ -72,12 +70,9 @@ export const showCurrentMonth = () => ({
   type: CURRENT_MONTH,
 });
 
-export const showNextMonth = () => ({
-  type: NEXT_MONTH,
-});
-
-export const showPreviousMonth = () => ({
-  type: PREVIOUS_MONTH,
+export const showNewMonth = newMonth => ({
+  type: NEW_MONTH,
+  payload: newMonth,
 });
 
 export const daysArrayAG = daysArray => ({

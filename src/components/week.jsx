@@ -10,13 +10,7 @@ class Week extends Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-//   onChange(e) {
-//     this.props.dispatch(fetchUserData(e.target.value, this.props.month.monthNum + 1));
-//     console.log(e.target.value);
-//     this.setState({ value: e.target.value });
-//   } this.props.dispatch(fetchUserData());
   componentWillReceiveProps(props) {
-    console.log("component will receive props")
     if (this.state.class === 'row week week--selected' && !props.weekSelected) {
       this.setState({ class: 'row week' });
     }
@@ -24,7 +18,6 @@ class Week extends Component {
 
   clickHandler() {
     if (this.state.class === 'row week' && !this.props.weekSelected && this.props.userData.weeks) {
-      console.log("this.props.userData clickHandler", this.props.userData)
       this.props.dispatch(selectWeek(this.props.weekData)); 
       this.setState({ class: 'row week week--selected' });
     } else if (this.state.class === 'row week week--selected' && this.props.weekSelected) {
@@ -33,11 +26,9 @@ class Week extends Component {
     } else if (this.state.class === 'row week week--selected' && !this.props.weekSelected) {
       this.setState({ class: 'row week' });
     }
-    console.log(this.props.week);
   }
 
   renderDays() {
-      console.log('inside week', this.props.weekData)
     return this.props.days.map((day, index) => {
       if (this.props.weekData) {
         return (
@@ -53,8 +44,7 @@ class Week extends Component {
             <h3 className="textColor ">{day}</h3>
           </div>
         );
-
-    }
+      }
     });
   }
 

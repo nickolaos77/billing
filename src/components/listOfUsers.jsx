@@ -14,14 +14,11 @@ class ListOfUsers extends Component {
   onChange(e) {
     if (e.target.value !== 'username') {
       this.props.dispatch(fetchUserData(e.target.value, this.props.month.monthNum + 1));
-      console.log(e.target.value);
       this.setState({ value: e.target.value });
     } else if (e.target.value === 'username') {
       this.props.dispatch(fetchUserData());
-      console.log(e.target.value);
       this.setState({ value: e.target.value });
     }
-
   }
 
   renderUsers() {

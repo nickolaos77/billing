@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { CURRENT_MONTH, NEXT_MONTH, PREVIOUS_MONTH } from '../actions/types';
+import { CURRENT_MONTH, NEW_MONTH } from '../actions/types';
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -9,19 +9,16 @@ export default (state = null, action) => {
         monthNum: moment().month(),
         date: moment(),
       });
-    case NEXT_MONTH:
-      let nextDate = state.date.add(1,'M');
+    case NEW_MONTH:
+      if (action.payload === 'next') {
+        var newDate = state.date.add(1,'M');  
+      } else if ( action.payload === 'previous') {
+        var newDate = state.date.subtract(1,'M');
+      } 
       return ({
-        name: nextDate.format('MMMM'),
-        monthNum: nextDate.month(),
-        date: nextDate,
-      });
-    case PREVIOUS_MONTH:
-      let previousDate = state.date.subtract(1,'M');
-      return ({
-        name: previousDate.format('MMMM'),
-        monthNum: previousDate.month(),
-        date: previousDate,
+        name: newDate.format('MMMM'),
+        monthNum: newDate.month(),
+        date: newDate,
       });
     default:
       return state;

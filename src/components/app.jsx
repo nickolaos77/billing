@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import createDaysArrayUtil from '../helpers/';
-
 import { fetchUsers, showCurrentMonth, daysArrayAG } from '../actions/index';
 import ListOfUsers from './listOfUsers';
 import Calendar from './calendar';
@@ -10,19 +9,12 @@ import Buttons from './buttons';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { user: '' };
-    // this.clickHandler = this.clickHandler.bind(this);
-    this.createDaysArray = this.createDaysArray.bind(this);
   }
 
   componentDidMount() {
-    this.props.dispatch(daysArrayAG(this.createDaysArray()));
+    this.props.dispatch(daysArrayAG(createDaysArrayUtil()));
     this.props.dispatch(fetchUsers());
     this.props.dispatch(showCurrentMonth());
-  }
-
-  createDaysArray() {
-    return createDaysArrayUtil();
   }
 
   render() {
