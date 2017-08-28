@@ -20,7 +20,7 @@ class ListOfWeeks extends Component {
     if (this.props.days.length > 0 && !this.props.userData.weeks) { // at first load this if is executed
       const numOfWeeks = this.props.days.length / 7;
       for (let i = 0; i < numOfWeeks; i++) {
-        console.log("extra week from 1");
+        console.log('inside 1')
         weeks.push(<Week
           className="row"
           key={i}
@@ -29,10 +29,13 @@ class ListOfWeeks extends Component {
         />);
       }
     } else if (this.props.days.length > 0 && this.props.userData.weeks.length !==0) {
-        if (weekNumberOfFirstWeekOfMonth < this.props.userData.weeks[0].week_number) {
+      // at the beginning of the new year or when the firs week of this month has already been 
+      // appended to the previous month
+      if ((weekNumberOfFirstWeekOfMonth < this.props.userData.weeks[0].week_number)
+      || weekNumberOfFirstWeekOfMonth === 52) {
+        console.log('inside 2')
         weekNumberOfFirstWeekOfMonth++;
         weeksNumbersReconcilationDone = true;
-        console.log("extra week from 2");
         weeks.push(<Week
           className="row"
           key="firstWeek"
@@ -42,7 +45,7 @@ class ListOfWeeks extends Component {
       if ( weeksNumbersReconcilationDone===false ) { // if there has not been a reconcilation
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 0; i <= numOfWeeks; i++) {
-          console.log("extra week from 3");
+           console.log('inside 3')
           console.log(this.props.userData.weeks[i]); 
           weeks.push(<Week
             className="row"
@@ -54,7 +57,7 @@ class ListOfWeeks extends Component {
       } else {//if there has been a reconcilation skip one week
         const numOfWeeks = this.props.days.length / 7;
         for (let i = 1; i <= numOfWeeks; i++) {
-          console.log("extra week from 4");
+           console.log('inside 4')
           console.log(this.props.userData.weeks[i-1]); 
           weeks.push(<Week
             className="row"
