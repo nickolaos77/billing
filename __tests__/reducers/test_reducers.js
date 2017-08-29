@@ -6,45 +6,20 @@ describe('days reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual([]);
   });
-  it('should handle ADD_TODO', () => {
+  it('should handle DAYS_ARRAY', () => {
     expect(
       reducer([], {
-        type: types.ADD_TODO,
-        text: 'Run the tests'
+        type: DAYS_ARRAY,
+        payload:[1, 2, 3, 4, 5, 6, 7],
       })
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 0
-      }
-    ])
-
+    ).toEqual([1, 2, 3, 4, 5, 6, 7]);
+  });
+  it('should handle DAYS_ARRAY', () => {
     expect(
-      reducer(
-        [
-          {
-            text: 'Use Redux',
-            completed: false,
-            id: 0
-          }
-        ],
-        {
-          type: types.ADD_TODO,
-          text: 'Run the tests'
-        }
-      )
-    ).toEqual([
-      {
-        text: 'Run the tests',
-        completed: false,
-        id: 1
-      },
-      {
-        text: 'Use Redux',
-        completed: false,
-        id: 0
-      }
-    ])
-  })
-})
+      reducer([], {
+        type: DAYS_ARRAY,
+        payload: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      })
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  });
+});
