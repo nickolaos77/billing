@@ -14,7 +14,7 @@ module.exports = {
         './src/components'
     ],  
     alias: {
-        actions:'src/actions/actions.jsx'
+        actions:'app/actions/actions.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -25,6 +25,13 @@ module.exports = {
         query: {
           presets: ['react', 'es2015','stage-0']
         },
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
     ]
   }
 };
