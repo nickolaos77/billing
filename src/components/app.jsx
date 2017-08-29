@@ -7,10 +7,6 @@ import Calendar from './calendar';
 import Buttons from './buttons';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     this.props.dispatch(daysArrayAG(createDaysArrayUtil()));
     this.props.dispatch(fetchUsers());
@@ -24,15 +20,15 @@ class App extends Component {
           <form>
             <fieldset>
               <div className="row" >
-                <label><h3 className="textColor centered" style={{ marginRight: 30 }}>Select user:  </h3></label>
-                <ListOfUsers />
+                <label><h3 className="textColor centered label" style={{ marginRight: 30 }}>Select user:  </h3></label>
+                <ListOfUsers /> {/* no children */}
               </div>
             </fieldset>
           </form>
         </header>
         <section className="column section">
-          <Calendar />
-          <Buttons />
+          <Calendar /> {/* children: weekDays, listOfWeeks */}
+          <Buttons />  {/* no children */}
         </section>
       </div>
     );

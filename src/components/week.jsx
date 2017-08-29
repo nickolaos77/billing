@@ -34,7 +34,9 @@ class Week extends Component {
         return (
           <div key={day} className="textWrapper column">
             <h3>{day}</h3>
-            <h5>{this.props.weekData.days_in_week[index].id}</h5>
+            <h5>
+              {this.props.weekData.days_in_week[index].hours}:{this.props.weekData.days_in_week[index].minutes}
+            </h5>
           </div>
         );
       }

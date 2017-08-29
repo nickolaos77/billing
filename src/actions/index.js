@@ -29,7 +29,7 @@ const errorHandler = (error) => {
     console.log('Error', error.message);
   }
   console.log(error.config);
-}
+};
 
 export const fetchUsers = () =>
   (dispatch) => {

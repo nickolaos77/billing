@@ -4,4 +4,3 @@ export const CURRENT_MONTH = 'current_month';
 export const NEW_MONTH = 'new_month';
 export const DAYS_ARRAY = 'days_array';
 export const SELECT_WEEK = 'select_week';
-

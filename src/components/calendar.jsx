@@ -5,35 +5,35 @@ import WeekDays from './weekdays';
 import ListOfWeeks from './listOfWeeks';
 import createDaysArrayUtil from '../helpers/'; 
 
-const Calendar = (props) => {
+const Calendar = ({ dispatch, month, userData }) => {
   const clickHandler = (newMonth) => {
-    props.dispatch(fetchUserData()); // clear the userdata
-    props.dispatch(showNewMonth(newMonth));
-    props.dispatch(daysArrayAG(createDaysArrayUtil(props.month.date)));
-    if (newMonth === 'previous' && props.userData.userId) {
-      props.dispatch(
-        fetchUserData(props.userData.userId, props.month.monthNum));
-    } else if (newMonth === 'next' && props.userData.userId) {
-      props.dispatch(
-        fetchUserData(props.userData.userId, props.month.monthNum + 2));
+    dispatch(fetchUserData()); // clear the userdata
+    dispatch(showNewMonth(newMonth));
+    dispatch(daysArrayAG(createDaysArrayUtil(month.date)));
+    if (newMonth === 'previous' && userData.userId) {
+      dispatch(
+        fetchUserData(userData.userId, month.monthNum));
+    } else if (newMonth === 'next' && userData.userId) {
+      dispatch(
+        fetchUserData(userData.userId, month.monthNum + 2));
     }
   };
   return (
     <div className="column calendar">
       <div className="row spaceAround calendar__month">
-        <h2
-          className="textColor hover"
+        <button
+          className="button--arrow hover"
           onClick={() => clickHandler('previous')}
-        >&#8249;</h2>
-        {props.month && <h2 className="textColor">{props.month.name}</h2>}
-        <h2
-          className="textColor hover"
+        >&#8249;</button>
+        {month && <h2 className="textColor">{month.name}</h2>}
+        <button
+          className="button--arrow hover"
           onClick={() => clickHandler('next')}
-        >&#8250;</h2>
+        >&#8250;</button>
       </div>
       <div className="column calendar__body">
-        <WeekDays />
-        <ListOfWeeks />
+        <WeekDays />  {/* no children */}
+        <ListOfWeeks />  {/* no children */}
       </div>
     </div>
   );
