@@ -1,5 +1,5 @@
 import moment from 'moment';
-// the function return an array with all the days (numbers) of the view 
+// the function constructs and returns an array with all the days (numbers) of the view 
 // of the specific month 
 export default (Month = moment()) => {
   const endOfPreviousMonth = Month.subtract(1, 'M').endOf('month').format('D');
