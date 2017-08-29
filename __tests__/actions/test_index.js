@@ -41,6 +41,7 @@ describe('async actions', () => {
       const expected = [
             {type: types.FETCH_USERS, payload: sampleUsers }
         ]
+          console.log(actions.fetchUsers());
     return store.dispatch(actions.fetchUsers())
       .then(() => {
                 expect(store.getActions()).toEqual(expected)

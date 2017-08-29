@@ -34,7 +34,7 @@ const errorHandler = (error) => {
 export const fetchUsers = () =>
   (dispatch) => {
     const url = `${ROOT_URL}users`;
-    axios.get(url)
+    return axios.get(url)
       .then((response) => {
         dispatch({
           type: FETCH_USERS,
@@ -49,7 +49,7 @@ export const fetchUserData = (userId, month) => {
   if (userId && month) {
     return (dispatch) => {
       const url = `${ROOT_URL}training/weeks/${month}/${2017}/${userId}`;
-      axios.get(url)
+      return axios.get(url)
         .then((response) => {
           const weeks = response.data.data.weeks
             .sort((weekA, weekB) => weekA.week_number - weekB.week_number);
