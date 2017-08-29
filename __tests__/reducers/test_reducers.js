@@ -1,4 +1,4 @@
-import expect from 'expect'
+import expect from 'expect';
 import reducer from '../../src/reducers/daysReducer';
 import { DAYS_ARRAY } from '../../src/actions/types';
 
